@@ -12,3 +12,9 @@ writable/debugbar/*
 *.log
 Thumbs.db
 .DS_Store
+brain/
+scratch/
+extract1.txt
+Page_new.txt
+refactor_edu.php
+public/check_db.php
