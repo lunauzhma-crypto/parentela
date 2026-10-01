@@ -1,0 +1,784 @@
+/* ==========================================================================
+   PARENTELA ACCESSIBILITY WIDGET (A11Y)
+   Authentic accessiBe & parent.com Visual Aesthetics
+   Right-Docked Sidebar, Seizure Safety Tone-Down, and Typography Isolation
+   ========================================================================== */
+
+/* 1. TYPOGRAPHY & RESET ISOLATION FOR WIDGET */
+#accModal,
+#accModal *,
+.acc-floating-btn,
+.acc-floating-btn *,
+.acc-dialog,
+.acc-dialog * {
+    box-sizing: border-box !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+    letter-spacing: normal !important;
+    text-shadow: none !important;
+    font-style: normal !important;
+}
+
+/* Prevent any site-wide H2 decoration bleed */
+.acc-dialog h2,
+.acc-dialog h2::after {
+    display: none !important;
+}
+
+.acc-dialog .acc-header-title {
+    display: block !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    text-align: center !important;
+    margin: 8px 0 14px 0 !important;
+    letter-spacing: -0.2px !important;
+}
+
+/* 2. FLOATING ACCESS BUTTON */
+.acc-floating-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #1868DF;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(24, 104, 223, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99990;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background 0.2s;
+    outline: none;
+}
+
+.acc-floating-btn:hover {
+    transform: scale(1.08);
+    background: #1156C0;
+    box-shadow: 0 8px 26px rgba(24, 104, 223, 0.55);
+}
+
+.acc-floating-btn:focus-visible {
+    outline: 3px solid #FCD34D;
+    outline-offset: 3px;
+}
+
+.acc-floating-btn svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+}
+
+/* 3. MODAL BACKDROP & RIGHT-DOCKED SIDEBAR */
+.acc-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(3px);
+    z-index: 99998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.28s ease, visibility 0.28s;
+}
+
+.acc-modal-backdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Right-Docked Sidebar exactly as shown in parent.com reference */
+.acc-dialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 480px;
+    max-width: 95vw;
+    height: 100vh;
+    background: #ffffff;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: -10px 0 50px rgba(0, 20, 60, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 99999;
+    transform: translateX(100%);
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.acc-modal-backdrop.is-open .acc-dialog {
+    transform: translateX(0);
+}
+
+/* 4. HEADER (SOLID BLUE accessiBe STYLE) */
+.acc-dialog-header {
+    background: #1868DF;
+    color: #ffffff;
+    padding: 18px 22px 18px;
+    flex-shrink: 0;
+}
+
+.acc-header-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.acc-btn-close-icon {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.acc-btn-close-icon:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.acc-lang-selector {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.16);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: #ffffff;
+}
+
+.acc-header-action-pills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.acc-pill-btn {
+    background: #ffffff;
+    color: #1868DF;
+    border: none;
+    padding: 7px 15px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.acc-pill-btn:hover {
+    background: #F8FAFC;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+/* 5. BODY & SCROLLABLE CONTENT */
+.acc-dialog-body {
+    padding: 20px 22px;
+    overflow-y: auto;
+    flex-grow: 1;
+    background: #FFFFFF;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 #F8FAFC;
+}
+
+.acc-dialog-body::-webkit-scrollbar {
+    width: 6px;
+}
+.acc-dialog-body::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 6px;
+}
+
+/* AI Assistant Card */
+.acc-ai-card {
+    background: #F0F6FF;
+    border: 1px solid #D6E4FF;
+    border-radius: 14px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    margin-bottom: 22px;
+    transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.acc-ai-card:hover {
+    background: #E8F1FF;
+    border-color: #BFDBFE;
+    box-shadow: 0 4px 14px rgba(24, 104, 223, 0.08);
+}
+
+.acc-ai-icon-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(24, 104, 223, 0.12);
+    flex-shrink: 0;
+}
+
+.acc-ai-content {
+    flex-grow: 1;
+}
+
+.acc-ai-content strong {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 2px;
+}
+
+.acc-ai-content span {
+    font-size: 11.5px;
+    color: #475569;
+    line-height: 1.35;
+}
+
+.acc-ai-action {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #1868DF;
+    white-space: nowrap;
+}
+
+/* Section Title */
+.acc-section-title {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0F172A;
+    margin: 18px 0 12px 0;
+    letter-spacing: -0.2px;
+}
+
+/* 6. PROFILES LIST (ROWS WITH LEFT TOGGLES, RIGHT ICONS, AND EXPANDED TEXT) */
+.acc-profiles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.acc-profile-row {
+    background: #ffffff;
+    border: 1px solid #E6EDF5;
+    border-radius: 14px;
+    padding: 13px 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.acc-profile-row:hover {
+    border-color: #CBD5E1;
+}
+
+.acc-profile-row.is-active {
+    border-color: #93C5FD;
+    background: #F8FAFF;
+}
+
+.acc-profile-main {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.acc-profile-text {
+    flex-grow: 1;
+}
+
+.acc-profile-title {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 2px;
+    transition: color 0.2s;
+}
+
+.acc-profile-row.is-active .acc-profile-title {
+    color: #1868DF !important;
+}
+
+.acc-profile-text span {
+    display: block;
+    font-size: 11.5px;
+    color: #64748B;
+    line-height: 1.35;
+}
+
+.acc-row-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #334155;
+    flex-shrink: 0;
+}
+
+.acc-profile-row.is-active .acc-row-icon {
+    color: #1868DF;
+}
+
+/* Detailed explanation paragraph that expands when ON (matches parent.com) */
+.acc-profile-desc-expanded {
+    display: none;
+    font-size: 12px;
+    color: #334155;
+    line-height: 1.5;
+    margin-top: 11px;
+    padding-top: 10px;
+    border-top: 1px dashed #CBD5E1;
+}
+
+.acc-profile-row.is-active .acc-profile-desc-expanded {
+    display: block;
+    animation: accFadeSlide 0.2s ease;
+}
+
+@keyframes accFadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* accessiBe Switch Toggle (OFF / ON) */
+.acc-toggle-switch {
+    display: inline-flex;
+    align-items: center;
+    background: #F1F5F9;
+    border-radius: 30px;
+    padding: 3px;
+    cursor: pointer;
+    font-size: 10.5px;
+    font-weight: 800;
+    color: #64748B;
+    border: 1px solid #E2E8F0;
+    gap: 2px;
+    user-select: none;
+    transition: background 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+    outline: none;
+}
+
+.acc-toggle-switch:focus-visible {
+    outline: 2px solid #1868DF;
+}
+
+.acc-toggle-switch span {
+    padding: 4px 9px;
+    border-radius: 16px;
+    transition: all 0.2s ease;
+}
+
+.acc-toggle-switch .pill-off {
+    background: #ffffff;
+    color: #0F172A;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.acc-toggle-switch .pill-on {
+    background: transparent;
+    color: #94A3B8;
+}
+
+.acc-toggle-switch.is-on {
+    background: #1868DF;
+    border-color: #1868DF;
+}
+
+.acc-toggle-switch.is-on .pill-off {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.75);
+    box-shadow: none;
+}
+
+.acc-toggle-switch.is-on .pill-on {
+    background: #ffffff;
+    color: #1868DF;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 7. CONTENT ADJUSTMENTS GRID */
+.acc-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.acc-grid-card {
+    background: #F8FAFC;
+    border: 1px solid #E6EDF5;
+    border-radius: 14px;
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.acc-grid-card:hover {
+    background: #ffffff;
+    border-color: #93C5FD;
+    box-shadow: 0 4px 12px rgba(24, 104, 223, 0.08);
+    transform: translateY(-1px);
+}
+
+.acc-grid-card.is-active {
+    background: #EFF6FF;
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 1.5px #3B82F6;
+}
+
+.acc-card-icon-big {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1868DF;
+    margin-bottom: 6px;
+}
+
+.acc-card-label {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #1E293B;
+}
+
+.acc-grid-card.is-active .acc-card-label {
+    color: #1868DF;
+}
+
+/* Stepper Card */
+.acc-stepper-card {
+    grid-column: span 2;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px 18px;
+    cursor: default;
+}
+
+.acc-stepper-card:hover {
+    transform: none;
+    box-shadow: none;
+    background: #F8FAFC;
+}
+
+.acc-card-header-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1E293B;
+}
+
+.acc-card-header-icon svg {
+    color: #1868DF;
+}
+
+.acc-stepper-inline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-radius: 30px;
+    padding: 3px 8px;
+}
+
+.acc-circle-btn {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #1868DF;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+}
+
+.acc-circle-btn:hover {
+    background: #1156C0;
+}
+
+.acc-scale-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1868DF;
+    min-width: 52px;
+    text-align: center;
+}
+
+/* 8. FOOTER BRAND BAR (SOLID BLUE) */
+.acc-dialog-footer-brand {
+    background: #1868DF;
+    color: #ffffff;
+    padding: 12px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12.5px;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.acc-dialog-footer-brand strong {
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.acc-footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.acc-footer-link:hover {
+    opacity: 0.85;
+}
+
+/* ==========================================================================
+   SEIZURE SAFETY MODE (Authentic parent.com behavior)
+   Limits animations, desaturates intense color contrasts, pauses motion
+   ========================================================================== */
+html.acc-seizure-safe *,
+html.acc-seizure-safe *:not(#accModal *):not(.acc-floating-btn *),
+html.acc-seizure-safe *:not(#accModal *)::before,
+html.acc-seizure-safe *:not(#accModal *)::after {
+    animation: none !important;
+    animation-play-state: paused !important;
+    transition: none !important;
+    transform: none !important;
+    scroll-behavior: auto !important;
+}
+
+html.acc-seizure-safe .scroll-banner-track,
+html.acc-seizure-safe .testimoni-track {
+    animation: none !important;
+    animation-play-state: paused !important;
+}
+
+/* Desaturate & tone down intense color triggers */
+html.acc-seizure-safe body {
+    filter: saturate(72%) contrast(92%);
+}
+
+html.acc-seizure-safe img,
+html.acc-seizure-safe video,
+html.acc-seizure-safe iframe {
+    filter: saturate(65%) contrast(90%) !important;
+}
+
+/* Mute ultra-vibrant colored banners */
+html.acc-seizure-safe .section-scroll-banner {
+    background: #EAE2DB !important;
+    color: #4A3E39 !important;
+}
+
+html.acc-seizure-safe .btn-hero-primary,
+html.acc-seizure-safe .btn-explore-shop,
+html.acc-seizure-safe .btn-submit-action {
+    background: #A34545 !important;
+    box-shadow: none !important;
+}
+
+/* ==========================================================================
+   OTHER FUNCTIONAL MODIFIER CLASSES
+   ========================================================================== */
+
+/* Font Sizing */
+html.acc-font-sm body { font-size: 90% !important; }
+html.acc-font-md body { font-size: 112% !important; }
+html.acc-font-lg body { font-size: 125% !important; }
+html.acc-font-xl body { font-size: 140% !important; }
+
+/* Dyslexia Font */
+html.acc-dyslexic,
+html.acc-dyslexic *:not(#accModal *):not(.acc-floating-btn *) {
+    font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', 'Trebuchet MS', sans-serif !important;
+    letter-spacing: 0.6px !important;
+    word-spacing: 2px !important;
+    line-height: 1.75 !important;
+}
+
+/* Contrast Modes */
+html.acc-contrast-dark {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+}
+html.acc-contrast-dark body,
+html.acc-contrast-dark main,
+html.acc-contrast-dark section,
+html.acc-contrast-dark header:not(#accModal *),
+html.acc-contrast-dark footer:not(#accModal *),
+html.acc-contrast-dark .container,
+html.acc-contrast-dark .hero-section,
+html.acc-contrast-dark .section-shop-gateway,
+html.acc-contrast-dark .shop-card,
+html.acc-contrast-dark .blog-card,
+html.acc-contrast-dark .course-card,
+html.acc-contrast-dark .testi-card {
+    background-color: #0A0A0A !important;
+    color: #FFFFFF !important;
+    border-color: #333333 !important;
+}
+html.acc-contrast-dark h1:not(#accModal *),
+html.acc-contrast-dark h2:not(#accModal *),
+html.acc-contrast-dark h3:not(#accModal *),
+html.acc-contrast-dark h4:not(#accModal *),
+html.acc-contrast-dark strong:not(#accModal *) {
+    color: #FCD34D !important;
+}
+html.acc-contrast-dark a:not(#accModal *):not(.acc-floating-btn) {
+    color: #60A5FA !important;
+}
+html.acc-contrast-dark p:not(#accModal *),
+html.acc-contrast-dark span:not(#accModal *):not(.acc-toggle-switch *) {
+    color: #E2E8F0 !important;
+}
+
+html.acc-monochrome {
+    filter: grayscale(100%) !important;
+}
+
+/* Highlight Links */
+html.acc-highlight-links a:not(#accModal *):not(.acc-floating-btn) {
+    text-decoration: underline 2.5px solid #1868DF !important;
+    background-color: rgba(254, 240, 138, 0.45) !important;
+    color: #1E3A8A !important;
+    font-weight: 700 !important;
+    padding: 1px 3px !important;
+    border-radius: 3px !important;
+}
+
+/* Highlight Titles */
+html.acc-highlight-titles h1:not(#accModal *),
+html.acc-highlight-titles h2:not(#accModal *),
+html.acc-highlight-titles h3:not(#accModal *),
+html.acc-highlight-titles h4:not(#accModal *) {
+    outline: 2px dashed #D97706 !important;
+    outline-offset: 4px !important;
+    background-color: rgba(254, 243, 199, 0.35) !important;
+}
+
+/* Focus Reading Ruler */
+.acc-reading-ruler {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 38px;
+    background: rgba(254, 240, 138, 0.28);
+    border-top: 2px solid #F59E0B;
+    border-bottom: 2px solid #F59E0B;
+    pointer-events: none;
+    z-index: 99995;
+    display: none;
+    transform: translateY(-50%);
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.25);
+}
+
+html.acc-ruler-active .acc-reading-ruler {
+    display: block;
+}
+
+/* Speech Toast */
+.acc-speech-toast {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    background: #0F172A;
+    color: #ffffff;
+    border-left: 4px solid #10B981;
+    border-radius: 12px;
+    padding: 11px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.28);
+    z-index: 999999;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.25s, transform 0.25s;
+}
+
+.acc-speech-toast.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Responsive on Mobile */
+@media (max-width: 580px) {
+    .acc-dialog {
+        width: 100vw;
+        border-radius: 0;
+    }
+    .acc-cards-grid {
+        grid-template-columns: 1fr;
+    }
+    .acc-stepper-card {
+        grid-column: span 1;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .acc-header-action-pills {
+        gap: 6px;
+    }
+    .acc-pill-btn {
+        padding: 5px 11px;
+        font-size: 11px;
+    }
+}

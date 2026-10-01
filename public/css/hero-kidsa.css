@@ -1,0 +1,539 @@
+/* ==========================================================================
+   PARENTELA - HERO SECTION (KIDSA REVISION)
+   Style: Split 2-Column Editorial Warm Cream & Playful Doodles
+   ========================================================================== */
+
+:root {
+  --kidsa-cream: #FAF5EF;
+  --kidsa-cream-light: #FFF9F3;
+  --kidsa-terracotta: #DE5935;
+  --kidsa-terracotta-hover: #C54623;
+  --kidsa-terracotta-soft: rgba(222, 89, 53, 0.12);
+  --kidsa-terracotta-glow: rgba(222, 89, 53, 0.25);
+  --kidsa-text-dark: #2F231D;
+  --kidsa-text-body: #59473D;
+  --kidsa-text-muted: #8C786E;
+  --kidsa-divider-bg: #FAF5F0;
+  --kidsa-border-line: #EEDFD5;
+}
+
+/* Base Hero Container */
+.hero-kidsa-section {
+  position: relative;
+  background-color: var(--kidsa-cream);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 237, 219, 0.6) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(254, 228, 212, 0.45) 0%, transparent 45%);
+  padding: 64px 0 100px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.hero-kidsa-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Split Grid Layout */
+.hero-kidsa-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  align-items: center;
+  gap: 48px;
+  position: relative;
+}
+
+/* ==========================================================================
+   KOLOM KIRI: Typography, Guide Rail, Doodles, CTA
+   ========================================================================== */
+
+.hero-kidsa-left {
+  position: relative;
+  padding-left: 36px;
+  z-index: 5;
+}
+
+/* Vertical Decorative Rail Line with Bullets */
+.hero-vertical-rail {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 16px;
+  width: 2px;
+  background: linear-gradient(to bottom, 
+    transparent 0%, 
+    var(--kidsa-border-line) 15%, 
+    var(--kidsa-terracotta) 50%, 
+    var(--kidsa-border-line) 85%, 
+    transparent 100%
+  );
+  border-radius: 2px;
+}
+
+.hero-vertical-rail::before,
+.hero-vertical-rail::after,
+.hero-rail-dot-center {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--kidsa-terracotta);
+  box-shadow: 0 0 0 3px rgba(222, 89, 53, 0.2);
+}
+
+.hero-vertical-rail::before {
+  top: 8%;
+}
+
+.hero-rail-dot-center {
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  background: #E5876B;
+}
+
+.hero-vertical-rail::after {
+  bottom: 8%;
+}
+
+/* Floating Doodles */
+.doodle-balloon {
+  position: absolute;
+  top: -46px;
+  left: -12px;
+  width: 58px;
+  height: auto;
+  pointer-events: none;
+  animation: kidsaFloatSlow 5s ease-in-out infinite alternate;
+  z-index: 4;
+}
+
+.doodle-bee {
+  position: absolute;
+  top: -18px;
+  right: 48px;
+  width: 90px;
+  height: auto;
+  pointer-events: none;
+  animation: kidsaHoverBee 4s ease-in-out infinite alternate;
+  z-index: 4;
+}
+
+.doodle-star {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  animation: kidsaTwinkle 3s ease-in-out infinite;
+}
+
+.doodle-star-1 {
+  top: 24px;
+  right: 18px;
+  animation-delay: 0.5s;
+}
+
+.doodle-star-2 {
+  bottom: 80px;
+  left: -20px;
+  width: 15px;
+  height: 15px;
+  animation-delay: 1.5s;
+}
+
+.doodle-toycar {
+  position: absolute;
+  bottom: -44px;
+  left: 36px;
+  width: 140px;
+  height: auto;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Badge Kicker */
+.hero-kidsa-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(222, 89, 53, 0.2);
+  color: var(--kidsa-terracotta);
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 14px rgba(222, 89, 53, 0.08);
+}
+
+.hero-kidsa-badge svg {
+  color: #F59E0B;
+}
+
+/* Headline H1 */
+.hero-kidsa-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(34px, 4vw, 48px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--kidsa-text-dark);
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.hero-kidsa-title .text-accent {
+  color: var(--kidsa-terracotta);
+  position: relative;
+  display: inline-block;
+}
+
+.hero-kidsa-title .text-accent::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 100%;
+  height: 6px;
+  background: rgba(222, 89, 53, 0.16);
+  border-radius: 4px;
+  z-index: -1;
+}
+
+/* Sub-headline */
+.hero-kidsa-subtitle {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 17px;
+  line-height: 1.68;
+  color: var(--kidsa-text-body);
+  max-width: 500px;
+  margin-bottom: 34px;
+  font-weight: 450;
+}
+
+/* Action CTA Buttons */
+.hero-kidsa-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 5;
+}
+
+.btn-kidsa-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--kidsa-terracotta);
+  color: #FFFFFF !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 9999px;
+  text-decoration: none;
+  border: 2px solid var(--kidsa-terracotta);
+  box-shadow: 0 8px 20px var(--kidsa-terracotta-glow);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-kidsa-primary:hover {
+  background-color: var(--kidsa-terracotta-hover);
+  border-color: var(--kidsa-terracotta-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(222, 89, 53, 0.35);
+  color: #FFFFFF;
+}
+
+.btn-kidsa-primary svg {
+  transition: transform 0.2s ease;
+}
+
+.btn-kidsa-primary:hover svg {
+  transform: translateX(4px);
+}
+
+.btn-kidsa-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--kidsa-terracotta) !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 30px;
+  border-radius: 9999px;
+  text-decoration: none;
+  border: 2px solid var(--kidsa-terracotta);
+  transition: all 0.25s ease;
+}
+
+.btn-kidsa-secondary:hover {
+  background-color: var(--kidsa-terracotta-soft);
+  transform: translateY(-2px);
+  color: var(--kidsa-terracotta);
+}
+
+.btn-kidsa-secondary svg {
+  transition: transform 0.2s ease;
+}
+
+.btn-kidsa-secondary:hover svg {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   KOLOM KANAN: Real Photography + Soft Gradient Blending
+   ========================================================================== */
+
+.hero-kidsa-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-kidsa-photo-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(92, 58, 42, 0.12);
+  background: var(--kidsa-cream);
+}
+
+/* Image with gradient mask for left edge feathering */
+.hero-kidsa-photo {
+  display: block;
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  object-position: center 30%;
+  border-radius: 28px;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.1) 4%, rgba(0,0,0,0.85) 18%, black 32%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.1) 4%, rgba(0,0,0,0.85) 18%, black 32%);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-kidsa-photo-wrapper:hover .hero-kidsa-photo {
+  transform: scale(1.02);
+}
+
+/* Soft Edge Blending Gradient Overlays */
+.hero-kidsa-blend-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 140px;
+  background: linear-gradient(to right, var(--kidsa-cream) 0%, rgba(250, 245, 239, 0.8) 35%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-kidsa-blend-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 60px;
+  background: linear-gradient(to top, rgba(250, 245, 239, 0.6) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Floating Trust Badge on Photo */
+.hero-kidsa-floating-card {
+  position: absolute;
+  bottom: 24px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 12px 18px;
+  border-radius: 18px;
+  box-shadow: 0 10px 28px rgba(61, 40, 29, 0.14);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  z-index: 5;
+  animation: kidsaFloatSlow 4.5s ease-in-out infinite alternate;
+}
+
+.floating-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #FEF3EE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--kidsa-terracotta);
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.floating-card-text strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--kidsa-text-dark);
+}
+
+.floating-card-text span {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--kidsa-text-muted);
+}
+
+/* ==========================================================================
+   SECTION DIVIDER: Scalloped Wavy Border SVG
+   ========================================================================== */
+
+.hero-scalloped-divider {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.hero-scalloped-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 38px;
+}
+
+.hero-scalloped-divider .shape-fill {
+  fill: var(--kidsa-divider-bg);
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+@keyframes kidsaFloatSlow {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-8px) rotate(1deg); }
+}
+
+@keyframes kidsaHoverBee {
+  0% { transform: translate(0px, 0px) rotate(0deg); }
+  50% { transform: translate(-6px, -8px) rotate(-4deg); }
+  100% { transform: translate(4px, -12px) rotate(3deg); }
+}
+
+@keyframes kidsaTwinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .hero-kidsa-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .hero-kidsa-left {
+    padding-left: 28px;
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .hero-kidsa-photo {
+    height: 380px;
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%);
+    mask-image: linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%);
+  }
+
+  .hero-kidsa-blend-left {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-kidsa-section {
+    padding: 44px 0 80px;
+  }
+
+  .hero-kidsa-left {
+    padding-left: 22px;
+  }
+
+  .hero-kidsa-title {
+    font-size: 32px;
+  }
+
+  .hero-kidsa-subtitle {
+    font-size: 15px;
+    margin-bottom: 26px;
+  }
+
+  .doodle-bee {
+    right: 10px;
+    top: -24px;
+    width: 65px;
+  }
+
+  .doodle-balloon {
+    top: -36px;
+    left: -6px;
+    width: 44px;
+  }
+
+  .hero-kidsa-photo {
+    height: 290px;
+  }
+
+  .hero-scalloped-divider svg {
+    height: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-kidsa-container {
+    padding: 0 18px;
+  }
+
+  .hero-kidsa-title {
+    font-size: 27px;
+    line-height: 1.25;
+  }
+
+  .hero-kidsa-cta-row {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .btn-kidsa-primary,
+  .btn-kidsa-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .doodle-toycar {
+    display: none;
+  }
+}
