@@ -1,0 +1,14 @@
+vendor/
+.env
+node_modules/
+writable/cache/*
+writable/logs/*
+writable/session/*
+writable/uploads/*
+writable/debugbar/*
+!writable/**/index.html
+.vscode/
+.idea/
+*.log
+Thumbs.db
+.DS_Store
